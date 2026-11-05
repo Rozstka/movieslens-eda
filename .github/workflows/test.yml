@@ -1,0 +1,15 @@
+name: reproduce
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.lock
+      - run: pytest -q
+      - run: python scripts/download_data.py && python scripts/evaluate.py
+      - run: jupyter nbconvert --to notebook --execute notebooks/01_eda.ipynb --output-dir reports
+      - run: jupyter nbconvert --to notebook --execute notebooks/02_recommender_baseline.ipynb --output-dir reports

@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-05",
+  "tests": 4,
+  "notebooks_executed": [
+    "01_eda.ipynb",
+    "02_recommender_baseline.ipynb"
+  ],
+  "dataset": "MovieLens 100K, publisher MD5 verified",
+  "github_ci": "not_run_local_branch"
+}
